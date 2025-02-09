@@ -43,8 +43,8 @@ def init_objects(num_objects: int, width: float, height: float):
 
     # Create objects - now just randomly positioned and sized initially
     for i in range(num_objects):
-        x = random.uniform(width * 0.1, width * 0.9)  # Random x position
-        y = random.uniform(height * 0.1, height * 0.9)  # Random y position
+        x = random.uniform(width * 0.3, width * 0.7)  # Random x position
+        y = random.uniform(height * 0.3, height * 0.7)  # Random y position
 
         objects.append(
             Object(
@@ -76,7 +76,7 @@ async def websocket_endpoint(websocket: WebSocket):
     await websocket.accept()
     try:
         ratio = 16 / 9
-        height = 2000
+        height = 1000
         width = height * ratio
         num_objects = 150
         init_objects(num_objects, width, height)  # Initialize objects and edges
