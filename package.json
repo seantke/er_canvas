@@ -1,0 +1,14 @@
+{
+  "name": "er_canvas",
+  "module": "index.ts",
+  "type": "module",
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "scripts": {
+    "dev": "concurrently \"bun build --outfile static/js/index.js --watch src/index.ts\" \"uvicorn server:app --reload\""
+  }
+}
