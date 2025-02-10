@@ -1,27 +1,15 @@
 // index.ts
-import {
-    type CanvasObject,
-    type ConnectedNodes,
-    createConnections,
-    fruchtermanReingoldStep,
-    type GraphEdge,
-} from "./force-layout"; // Update path if needed.
-import { drawFrame, resizeCanvas } from "./drawing";
+import { drawFrame, initializeCanvas } from "./drawing";
 import { websocket } from "./websocket-client";
-import { initializeGraphProperties } from "./property-initialization";
+import type { CanvasLayoutManager } from "./canvas_layout_manager";
 
-function simulateAndDraw(
-    initialObjects: CanvasObject[],
-    graph_edges: GraphEdge[],
-    connectedNodes: ConnectedNodes,
-    canvasWidth: number,
-    canvasHeight: number,
-) {
-    let objects = initialObjects;
+function simulateAndDraw(layoutManager: CanvasLayoutManager) {
     function drawLoop() {
-        // Simulate and draw
-        objects = fruchtermanReingoldStep(objects, connectedNodes, canvasWidth, canvasHeight);
-        drawFrame(objects, graph_edges);
+        layoutManager.simulate();
+        drawFrame(layoutManager, {
+            showBoundingBoxes: false, // Optional: show subgraph boundaries
+            debug: false, // Optional: show debug information
+        });
         requestAnimationFrame(drawLoop);
     }
     requestAnimationFrame(drawLoop);
@@ -30,13 +18,7 @@ function simulateAndDraw(
 websocket.onmessage = (event) => {
     const initialData = JSON.parse(event.data);
     console.log("Initial data received:", initialData);
-    let objects: CanvasObject[] = initialData.objects;
-    const graph_edges: GraphEdge[] = initialData.edges;
-    const canvasWidth = initialData.width;
-    const canvasHeight = initialData.height;
-    resizeCanvas(canvasWidth, canvasHeight);
-    // Create connection map and start animation loop.
-    const connectedNodes = createConnections(objects, graph_edges);
-    objects = initializeGraphProperties(objects, connectedNodes);
-    simulateAndDraw(objects, graph_edges, connectedNodes, canvasWidth, canvasHeight);
+    const layoutManager = initializeCanvas(window.innerWidth-20, initialData.height);
+    layoutManager.layoutCanvas(initialData.objects, initialData.edges);
+    simulateAndDraw(layoutManager);
 };
