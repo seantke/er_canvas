@@ -8,3 +8,5 @@ wheels/
 node_modules/
 # Virtual environments
 .venv
+# Compiled JS
+static/js/
