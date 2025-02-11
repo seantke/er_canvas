@@ -1,0 +1,28 @@
+html {
+    font-size: 14px;
+    color:white;
+}
+body { 
+    margin: 0; 
+    background: #353434;
+}
+canvas { display: block; }
+nav {
+    background-color: #474747;
+    width: 100%;
+}
+nav ul {
+    margin-top: 0;
+    list-style: none;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-direction: row;
+}
+
+nav li {
+    font-size:1.4rem;
+    padding: 0.6rem;
+    width:auto;
+    display:inline;
+}

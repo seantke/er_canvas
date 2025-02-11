@@ -1,5 +1,6 @@
 import type { CanvasObject, GraphEdge } from "./types";
 import { CanvasLayoutManager } from "./canvas_layout_manager";
+
 const canvas = document.querySelector("#simulationCanvas") as HTMLCanvasElement | null;
 const ctx = canvas?.getContext("2d", {alpha:false}) as CanvasRenderingContext2D | null;
 

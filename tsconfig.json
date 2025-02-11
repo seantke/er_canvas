@@ -14,8 +14,8 @@
     "noEmit": false,
 
     //Output settings
-    "outDir": "static/js",
-    "rootDir": "src",
+    "outDir": "dist/",
+    "rootDir": "projects/",
 
     // Best practices
     "strict": true,
@@ -27,5 +27,5 @@
     "noUnusedParameters": false,
     "noPropertyAccessFromIndexSignature": false
   },
-  "include": ["src"],
+  "include": ["projects/"],
 }

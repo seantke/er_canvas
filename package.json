@@ -9,6 +9,6 @@
     "typescript": "^5.0.0"
   },
   "scripts": {
-    "dev": "concurrently \"bun build --outfile static/js/index.js --watch src/index.ts\" \"uvicorn server:app --reload\""
+    "dev": "concurrently \"bun run build.ts\" \"uvicorn server:app --reload\""
   }
 }

@@ -42,7 +42,6 @@ export class CanvasLayoutManager {
         }
         const connectedNodes = ConnectedNodes(initialObjects, graphEdges);
         const objects = initializeGraphProperties(initialObjects, connectedNodes);
-        console.log("post-configuration objects:", objects);
 
         // Identify and separate subgraphs
         this.subgraphs = this.identifySubgraphs(objects, connectedNodes, graphEdges);
@@ -117,7 +116,6 @@ export class CanvasLayoutManager {
                 isSmallGraph: true,
             });
         }
-
         return subgraphs;
     }
 

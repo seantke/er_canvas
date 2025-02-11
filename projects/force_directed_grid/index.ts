@@ -1,7 +1,7 @@
 // index.ts
-import { drawFrame, initializeCanvas } from "./drawing";
-import { websocket } from "./websocket-client";
-import type { CanvasLayoutManager } from "./canvas_layout_manager";
+import { drawFrame, initializeCanvas } from "./src/drawing";
+import { websocket } from "./src/websocket-client";
+import type { CanvasLayoutManager } from "./src/canvas_layout_manager";
 
 function simulateAndDraw(layoutManager: CanvasLayoutManager) {
     function drawLoop() {

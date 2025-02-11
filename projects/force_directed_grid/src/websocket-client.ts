@@ -1,4 +1,4 @@
-export const websocket = new WebSocket("ws://localhost:8000/ws");
+export const websocket = new WebSocket("ws://localhost:8000/force_directed_grid/ws");
 
 websocket.onopen = (event) => {
     console.log("WebSocket connection opened");
